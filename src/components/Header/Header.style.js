@@ -4,9 +4,13 @@ export const HeaderLayout = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffbe98;
+  background-color: white;
   width: 100vw;
   height: 80px;
+
+  @media screen and (max-width: 768px) {
+    height: 60px;
+  }
 `;
 
 export const HeaderContainer = styled.div`
@@ -15,8 +19,10 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
     margin-left: 1rem;
   }
@@ -34,9 +40,10 @@ export const HeaderLogoImg = styled.img`
   height: 3rem;
   padding-bottom: 1rem;
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 768px) {
     width: 2rem;
     height: 2rem;
+    padding-bottom: 0.5rem;
   }
 `;
 
@@ -44,11 +51,11 @@ export const HeaderLogoH1 = styled.h1`
   font-size: 1.5rem;
   font-family: sans-serif;
   font-weight: bold;
-  color: white;
+  color: #ffbe98;
   margin: 0;
   white-space: nowrap;
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 768px) {
     font-size: 1rem;
   }
 `;
@@ -63,52 +70,73 @@ export const HeaderList = styled.ul`
   margin: 0;
   list-style: none;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 `;
 
 export const HeaderItem = styled.li`
-  color: #f2e8da;
+  color: #ffbe98;
   font-size: 1.2rem;
   font-family: sans-serif;
   font-weight: bold;
   white-space: nowrap;
   margin-left: 2rem;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
   cursor: pointer;
+
   &:hover {
     color: #de8286;
   }
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 768px) {
     font-size: 0.8rem;
+    margin-left: 0.5rem;
   }
 `;
 
-export const HeaderButton = styled.button`
+export const HeaderIconButton = styled.button`
   border: none;
-  outline: none;
   background-color: transparent;
-  color: white;
+  color: #ffbe98;
   padding: 0;
-  margin-right: 1rem;
-  width: 1.5rem;
-  height: 1.5rem;
   cursor: pointer;
   flex-shrink: 0;
+
+  &:hover {
+    color: #de8286;
+  }
 
   & > svg {
     width: 1.5rem;
     height: 1.5rem;
   }
 
-  @media screen and (max-width: 1024px) {
-    width: 1.2rem;
-    height: 1.2rem;
-
+  @media screen and (max-width: 768px) {
     & > svg {
-      width: 1.2rem;
-      height: 1.2rem;
+      width: 1rem;
+      height: 1rem;
     }
+  }
+`;
+
+export const HeaderSignButton = styled.button`
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #ffbe98;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: sans-serif;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #de8286;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.8rem;
+    padding: 0.3rem 1rem;
   }
 `;
