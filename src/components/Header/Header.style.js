@@ -14,17 +14,18 @@ export const HeaderLayout = styled.header`
 `;
 
 export const HeaderContainer = styled.div`
-  width: 1100px;
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 
   @media screen and (max-width: 768px) {
     width: 100%;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
 `;
 

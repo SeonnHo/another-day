@@ -1,6 +1,5 @@
 import React from 'react';
 import * as S from './Header.style';
-import logo from '../../assets/another_day_logo.png';
 import { FiShoppingCart, FiEdit2 } from 'react-icons/fi';
 
 export default function Header() {
@@ -8,7 +7,7 @@ export default function Header() {
     <S.HeaderLayout>
       <S.HeaderContainer>
         <S.HeaderLogoBox>
-          <S.HeaderLogoImg src={logo} />
+          <S.HeaderLogoImg src={'assets/another_day_logo.png'} />
           <S.HeaderLogoH1>Another Day</S.HeaderLogoH1>
         </S.HeaderLogoBox>
         <S.HeaderNav>
