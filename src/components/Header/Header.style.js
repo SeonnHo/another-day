@@ -7,6 +7,9 @@ export const HeaderLayout = styled.header`
   background-color: white;
   width: 100vw;
   height: 80px;
+  font-family: 'Ownglyph';
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
 
   @media screen and (max-width: 768px) {
     height: 60px;
@@ -50,7 +53,6 @@ export const HeaderLogoImg = styled.img`
 
 export const HeaderLogoH1 = styled.h1`
   font-size: 1.5rem;
-  font-family: sans-serif;
   font-weight: bold;
   color: #ffbe98;
   margin: 0;
@@ -77,7 +79,6 @@ export const HeaderList = styled.ul`
 export const HeaderItem = styled.li`
   color: #ffbe98;
   font-size: 1.2rem;
-  font-family: sans-serif;
   font-weight: bold;
   white-space: nowrap;
   margin-left: 2rem;
@@ -128,8 +129,7 @@ export const HeaderSignButton = styled.button`
   color: white;
   padding: 0.5rem 1.5rem;
   font-size: 1rem;
-  font-weight: bold;
-  font-family: sans-serif;
+  font-family: 'Ownglyph';
   cursor: pointer;
 
   &:hover {
@@ -139,5 +139,31 @@ export const HeaderSignButton = styled.button`
   @media screen and (max-width: 768px) {
     font-size: 0.8rem;
     padding: 0.3rem 1rem;
+  }
+`;
+
+export const HeaderUserInfoItem = styled.li`
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: black;
+  margin-left: 2rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+  }
+`;
+
+export const HeaderUserAvatarImg = styled.img`
+  width: 1.8rem;
+  border-radius: 100%;
+  margin-right: 0.5rem;
+
+  @media screen and (max-width: 768px) {
+    width: 1.5rem;
+    margin-right: 0.3rem;
   }
 `;
