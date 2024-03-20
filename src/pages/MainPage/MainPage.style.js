@@ -10,11 +10,19 @@ export const MainPageLayout = styled.main`
 export const MainPageBannerBox = styled.div`
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 500px;
   overflow: hidden;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.5),
+      rgba(255, 255, 255, 1)
+    ),
+    url('assets/cafe_banner.png');
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover;
 
   @media screen and (max-width: 768px) {
-    height: 200px;
+    height: 300px;
   }
 `;
 
@@ -32,9 +40,9 @@ export const MainPageBannerBackdrop = styled.div`
 export const MainPageBannerImg = styled.img`
   position: absolute;
   width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  /* transform: translate(-50%, -50%); */
 `;
 
 export const MainPageBannerTitleBox = styled.div`
