@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
 export const HeaderLayout = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
   width: 100vw;
   height: 80px;
   font-family: 'Ownglyph';

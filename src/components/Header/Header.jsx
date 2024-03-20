@@ -1,32 +1,62 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './Header.style';
 import { FiShoppingCart, FiEdit2 } from 'react-icons/fi';
 import { auth } from '../../firebase';
-import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  browserSessionPersistence,
+  setPersistence,
+  signInWithPopup,
+  signOut,
+} from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
-  const [user, setUser] = useState(null);
+  const [isLogined, setIsLogined] = useState(false);
+  const navigate = useNavigate();
 
   const handleGoogleSignIn = () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((data) => {
-        setUser(data.user);
-        console.log(data);
+    setPersistence(auth, browserSessionPersistence)
+      .then(() => {
+        signInWithPopup(auth, provider)
+          .then(() => {
+            setIsLogined(true);
+          })
+          .catch((error) => console.log(error));
       })
-      .catch((e) => console.log(e));
+      .catch((error) => console.log(error));
   };
 
   const handleGoogleSignOut = () => {
     signOut(auth)
-      .then(() => setUser(null))
+      .then(() => {
+        setIsLogined(false);
+        navigate('/');
+      })
       .catch((error) => console.log(error));
   };
+
+  const sessionUserData = () => {
+    for (const key of Object.keys(sessionStorage)) {
+      if (key.includes('firebase:authUser')) {
+        return JSON.parse(sessionStorage.getItem(key));
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (sessionUserData()) {
+      setIsLogined(true);
+    } else {
+      setIsLogined(false);
+    }
+  }, []);
 
   return (
     <S.HeaderLayout>
       <S.HeaderContainer>
-        <S.HeaderLogoBox>
+        <S.HeaderLogoBox onClick={() => navigate('/')}>
           <S.HeaderLogoImg src={'assets/another_day_logo.png'} />
           <S.HeaderLogoH1>Another Day</S.HeaderLogoH1>
         </S.HeaderLogoBox>
@@ -38,19 +68,25 @@ export default function Header() {
                 <FiShoppingCart />
               </S.HeaderIconButton>
             </S.HeaderItem>
-            {user ? (
+            {isLogined ? (
               <>
-                <S.HeaderItem>
-                  <S.HeaderIconButton>
-                    <FiEdit2 />
-                  </S.HeaderIconButton>
-                </S.HeaderItem>
+                {sessionUserData().uid === process.env.REACT_APP_ADMIN_UID && (
+                  <S.HeaderItem>
+                    <S.HeaderIconButton
+                      onClick={() => {
+                        navigate('/create');
+                      }}
+                    >
+                      <FiEdit2 />
+                    </S.HeaderIconButton>
+                  </S.HeaderItem>
+                )}
+
                 <S.HeaderUserInfoItem>
                   <S.HeaderUserAvatarImg
-                    src={user.photoURL}
+                    src={sessionUserData().photoURL}
                     alt="user profile img"
                   />
-                  {user.displayName}
                 </S.HeaderUserInfoItem>
                 <S.HeaderItem>
                   <S.HeaderSignButton onClick={handleGoogleSignOut}>
