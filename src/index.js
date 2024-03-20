@@ -6,13 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import MainPage from './pages/MainPage/MainPage';
+import ProductCreationPage from './pages/ProductCreationPage/ProductCreationPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
     errorElement: <NotFoundPage />,
-    children: [{ index: true, element: <MainPage /> }],
+    children: [
+      { index: true, element: <MainPage /> },
+      { path: '/create', element: <ProductCreationPage /> },
+    ],
   },
 ]);
 
