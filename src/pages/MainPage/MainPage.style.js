@@ -17,7 +17,7 @@ export const MainPageBannerBox = styled.div`
       rgba(0, 0, 0, 0.5),
       rgba(255, 255, 255, 1)
     ),
-    url('assets/cafe_banner.png');
+    url('/assets/cafe_banner.png');
   background-repeat: no-repeat, no-repeat;
   background-size: cover;
 
