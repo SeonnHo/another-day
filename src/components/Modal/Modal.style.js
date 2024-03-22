@@ -12,12 +12,15 @@ const scale = keyframes`
   }
 `;
 
-export const ModalBackdrop = styled.main`
+export const ModalBackdrop = styled.div`
   position: fixed;
+  top: 0;
+  left: 0;
   z-index: 1000;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 `;
 
 export const ModalCardBox = styled.div`
@@ -44,6 +47,12 @@ export const ModalCard = styled.div`
   padding: 1rem;
   box-sizing: border-box;
   animation: 0.5s ${scale} ease;
+
+  @media screen and (max-width: 768px) {
+    width: 300px;
+    height: 200px;
+    padding: 0.5rem;
+  }
 `;
 
 export const ModalContentBox = styled.div`
@@ -60,6 +69,10 @@ export const ModalContent = styled.p`
   margin: 0;
   white-space: pre-wrap;
   text-align: center;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 export const ModalButtonBox = styled.div`
@@ -80,5 +93,10 @@ export const ModalButton = styled.button`
 
   &:hover {
     background-color: #de8286;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0.4rem 1.5rem;
+    font-size: 0.7rem;
   }
 `;
