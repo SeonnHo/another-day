@@ -132,6 +132,13 @@ export const ProductCreationPageInputCardTitle = styled.h1`
   }
 `;
 
+export const ProductCreationPageInputCardButtonBox = styled.div`
+  display: flex;
+  justify-content: end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+`;
+
 export const ProductCreationPageInputCardButton = styled.button`
   border: 0;
   outline: 0;
@@ -142,11 +149,4 @@ export const ProductCreationPageInputCardButton = styled.button`
   flex-basis: 100px;
   border-radius: 0.5rem;
   cursor: pointer;
-`;
-
-export const ProductCreationPageInputCardButtonBox = styled.div`
-  display: flex;
-  justify-content: end;
-  gap: 0.5rem;
-  margin-top: 1rem;
 `;
