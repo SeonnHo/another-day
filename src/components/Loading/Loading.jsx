@@ -9,7 +9,7 @@ export default function Loading() {
         <S.LoadingBackdrop>
           <S.LoadingBox>
             <S.LoadingText>상품 등록 중입니다.</S.LoadingText>
-            <S.LoadingImg src={'/assets/spinner2.gif'} alt="spinner" />
+            <S.LoadingImg src={'/assets/spinner.gif'} alt="spinner" />
           </S.LoadingBox>
         </S.LoadingBackdrop>,
         document.body
