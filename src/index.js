@@ -7,6 +7,10 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import MainPage from './pages/MainPage/MainPage';
 import ProductCreationPage from './pages/ProductCreationPage/ProductCreationPage';
+import ProductListPage from './pages/ProductListPage/ProductListPage';
+import ProductDetailPage from './pages/ProductDetailPage/ProductDetailPage';
+import MyCartPage from './pages/MyCartPage/MyCartPage';
+import ProtectedRoute from './pages/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
@@ -15,7 +19,24 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
     children: [
       { index: true, element: <MainPage /> },
-      { path: '/create', element: <ProductCreationPage /> },
+      { path: '/products', element: <ProductListPage /> },
+      {
+        path: '/products/new',
+        element: (
+          <ProtectedRoute requireAdmin>
+            <ProductCreationPage />
+          </ProtectedRoute>
+        ),
+      },
+      { path: '/products/:id', element: <ProductDetailPage /> },
+      {
+        path: '/carts',
+        element: (
+          <ProtectedRoute>
+            <MyCartPage />
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
 ]);
