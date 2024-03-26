@@ -59,6 +59,18 @@ export async function addNewProduct(product, image) {
   });
 }
 
+export async function getProductList() {
+  return get(ref(database, 'products')) //
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        console.log(data);
+        return data;
+      }
+    })
+    .catch(console.error);
+}
+
 export function useFirebase() {
   return { adminUser, auth };
 }
