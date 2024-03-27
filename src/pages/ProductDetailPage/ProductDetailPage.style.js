@@ -106,4 +106,14 @@ export const ProductDetailPageButton = styled.button`
   &:hover {
     background-color: #fa9a85;
   }
+
+  @media screen and (max-width: 768px) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    border-radius: 0;
+    margin: 0;
+    padding: 1rem 0;
+  }
 `;
