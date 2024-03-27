@@ -20,6 +20,7 @@ export const MainPageBannerBox = styled.div`
     url('/assets/cafe_banner.png');
   background-repeat: no-repeat, no-repeat;
   background-size: cover;
+  background-position: 50%;
 
   @media screen and (max-width: 768px) {
     height: 300px;
