@@ -76,6 +76,7 @@ export const ProductDetailPageProductSizeSelect = styled.select`
   background-repeat: no-repeat;
   background-position-x: 98%;
   background-position-y: 50%;
+  background-size: 1rem;
 `;
 
 export const ProductDetailPageProductPrice = styled.p`
