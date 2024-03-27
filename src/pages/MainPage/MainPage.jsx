@@ -3,6 +3,7 @@ import * as S from './MainPage.style';
 import { useQuery } from '@tanstack/react-query';
 import { getProductList } from '../../api/firebase';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../../components/Loading/Loading';
 
 export default function MainPage() {
   const { isFetching, isLoading, isError, data } = useQuery({
@@ -17,9 +18,9 @@ export default function MainPage() {
     navigate(`/products/${product.title}`, { state: product });
   };
 
-  if (isFetching) return <div>Fetching...</div>;
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Something is wrong!</div>;
+  if (isFetching) return <Loading>Fetching...</Loading>;
+  if (isLoading) return <Loading>Loading...</Loading>;
+  if (isError) return <Loading>Something is wrong!</Loading>;
 
   return (
     <S.MainPageLayout>
