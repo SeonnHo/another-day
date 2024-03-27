@@ -139,7 +139,7 @@ export default function ProductCreationPage() {
           </S.ProductCreationPageInputCardButtonBox>
         </S.ProductCreationPageInputCard>
       </S.ProductCreationPageLayout>
-      {isLoading && <Loading />}
+      {isLoading && <Loading>상품 등록 중입니다.</Loading>}
       {isSuccess && (
         <Modal
           content={
