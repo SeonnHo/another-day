@@ -17,11 +17,21 @@ export default function Header() {
         </S.HeaderLogoBox>
         <S.HeaderNav>
           <S.HeaderList>
-            <S.HeaderItem>products</S.HeaderItem>
+            <S.HeaderItem
+              onClick={() => {
+                navigate('/products');
+              }}
+            >
+              products
+            </S.HeaderItem>
             {user ? (
               <>
                 <S.HeaderItem>
-                  <S.HeaderIconButton>
+                  <S.HeaderIconButton
+                    onClick={() => {
+                      navigate('/carts');
+                    }}
+                  >
                     <FiShoppingCart />
                   </S.HeaderIconButton>
                 </S.HeaderItem>
