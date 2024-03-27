@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const MainPageLayout = styled.main`
   display: flex;
@@ -63,7 +63,6 @@ export const MainPageProductListSection = styled.section`
   grid-template-columns: repeat(4, 1fr);
   column-gap: 4rem;
   row-gap: 4rem;
-  margin-top: 3rem;
   margin-bottom: 3rem;
 
   @media screen and (max-width: 1280px) {
@@ -123,7 +122,7 @@ export const MainPageProductInfoBox = styled.div`
   }
 `;
 
-export const MainPageProductTitle = styled.h2`
+export const MainPageProductTitle = styled.h3`
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
@@ -134,4 +133,59 @@ export const MainPageProductInfoText = styled.p`
   color: gray;
   margin: 0;
   text-align: center;
+`;
+
+export const MainPageRecommendMenuBox = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 0;
+
+  @media screen and (max-width: 768px) {
+    margin: 2rem 0;
+  }
+`;
+
+export const MainPageRecommendMenuTitle = styled.h2`
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+`;
+
+const swing = keyframes`
+  0% {
+    transform: rotate(25deg);
+  }
+
+  50% {
+    transform: rotate(0deg) translateX(10px) translateY(10px);
+  }
+
+  100% {
+    transform: rotate(-25deg) translateX(20px) translateY(10px);
+  }
+`;
+
+export const MainPageRecommendMenuImg = styled.img`
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: -1rem;
+  right: -1.5rem;
+  transform: rotate(25deg);
+  animation: ${swing} 1.5s linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+
+  @media screen and (max-width: 768px) {
+    width: 1.2rem;
+    height: 1.2rem;
+    top: -0.8rem;
+    right: -0.8rem;
+  }
 `;
