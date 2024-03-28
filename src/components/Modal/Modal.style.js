@@ -84,15 +84,18 @@ export const ModalButtonBox = styled.div`
 
 export const ModalButton = styled.button`
   border: none;
-  background-color: #ffbe98;
+  background-color: ${(props) =>
+    props.$backgroundColor ? props.$backgroundColor : '#ffbe98'};
   padding: 0.5rem 2rem;
   color: white;
   border-radius: 0.5rem;
   font-weight: bold;
   cursor: pointer;
+  margin-left: 1rem;
 
   &:hover {
-    background-color: #de8286;
+    background-color: ${(props) =>
+      props.$hoverBackgroundColor ? props.$hoverBackgroundColor : '#de8286'};
   }
 
   @media screen and (max-width: 768px) {
