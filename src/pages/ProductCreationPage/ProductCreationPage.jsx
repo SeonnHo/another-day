@@ -141,12 +141,11 @@ export default function ProductCreationPage() {
       </S.ProductCreationPageLayout>
       {isLoading && <Loading>상품 등록 중입니다.</Loading>}
       {isSuccess && (
-        <Modal
-          content={
-            '상품이 정상적으로 등록되었습니다.\n메인페이지로 이동합니다.'
-          }
-          onClick={handleModalClick}
-        />
+        <Modal onConfirm={handleModalClick}>
+          상품이 정상적으로 등록되었습니다.
+          <br />
+          메인페이지로 이동합니다.
+        </Modal>
       )}
     </>
   );
