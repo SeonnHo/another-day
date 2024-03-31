@@ -14,6 +14,5 @@ export async function uploadImage(file) {
     },
   });
 
-  // console.log(res);
   return res.data.url;
 }
