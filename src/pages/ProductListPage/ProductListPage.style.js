@@ -64,6 +64,7 @@ export const ProductListPageProductCard = styled.div`
     flex-direction: row;
     align-items: center;
     height: 200px;
+    box-sizing: border-box;
   }
 `;
 
@@ -72,7 +73,6 @@ export const ProductListPageProductImg = styled.img`
 
   @media screen and (max-width: 768px) {
     width: 100px;
-    height: fit-content;
   }
 `;
 
