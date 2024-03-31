@@ -107,6 +107,7 @@ export const HeaderIconButton = styled.button`
   padding: 0;
   cursor: pointer;
   flex-shrink: 0;
+  position: relative;
 
   &:hover {
     color: #de8286;
@@ -168,5 +169,29 @@ export const HeaderUserAvatarImg = styled.img`
   @media screen and (max-width: 768px) {
     width: 1.5rem;
     margin-right: 0.3rem;
+  }
+`;
+
+export const HeaderCartProductCountBadge = styled.div`
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  width: 16px;
+  height: 16px;
+  background-color: #de8286;
+  color: white;
+  font-family: 'Ownglyph';
+  font-size: 0.7rem;
+  font-weight: bold;
+  border-radius: 50%;
+  line-height: 16px;
+
+  @media screen and (max-width: 768px) {
+    top: -3px;
+    right: -6px;
+    width: 10px;
+    height: 10px;
+    font-size: 0.5rem;
+    line-height: 10px;
   }
 `;

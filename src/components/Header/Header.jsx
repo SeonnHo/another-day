@@ -2,11 +2,16 @@ import React from 'react';
 import * as S from './Header.style';
 import { FiShoppingCart, FiEdit2 } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../context/AuthContext';
+import { useAuthContext } from '../../context/AuthContext';
+import useCart from '../../hooks/useCart';
 
 export default function Header() {
   const { user, login, logout } = useAuthContext();
   const navigate = useNavigate();
+
+  const {
+    cartQuery: { data },
+  } = useCart();
 
   return (
     <S.HeaderLayout>
@@ -33,6 +38,13 @@ export default function Header() {
                     }}
                   >
                     <FiShoppingCart />
+                    {data && data.length > 0 && (
+                      <S.HeaderCartProductCountBadge>
+                        {data
+                          .map((itemBySize) => Object.values(itemBySize).length)
+                          .reduce((prev, current) => prev + current, 0)}
+                      </S.HeaderCartProductCountBadge>
+                    )}
                   </S.HeaderIconButton>
                 </S.HeaderItem>
 
