@@ -4,9 +4,9 @@ import { LuImagePlus } from 'react-icons/lu';
 import TextField from '../../components/TextField/TextField';
 import { useNavigate } from 'react-router-dom';
 import { uploadImage } from '../../api/uploader';
-import { addNewProduct } from '../../api/firebase';
 import Modal from '../../components/Modal/Modal';
 import Loading from '../../components/Loading/Loading';
+import useProducts from '../../hooks/useProducts';
 
 export default function ProductCreationPage() {
   const [file, setFile] = useState(null);
@@ -16,13 +16,14 @@ export default function ProductCreationPage() {
   const [isSuccess, setIsSuccess] = useState(false);
   const navigate = useNavigate();
 
+  const { addProduct } = useProducts();
+
   const handleTextChange = (e) => {
     const { name, value } = e.target;
     setProductInfo((product) => ({ ...product, [name]: value }));
   };
 
   const handlePhotoChange = (e) => {
-    console.log(e.target.files);
     let file = e.target.files[0];
     let reader = new FileReader();
 
@@ -43,13 +44,18 @@ export default function ProductCreationPage() {
   const handleCreateProduct = () => {
     setIsLoading(true);
     uploadImage(file).then((url) => {
-      addNewProduct(productInfo, url).then(() => {
-        setFile(null);
-        setPreview(null);
-        setProductInfo({});
-        setIsLoading(false);
-        setIsSuccess(true);
-      });
+      addProduct.mutate(
+        { productInfo, url },
+        {
+          onSuccess: () => {
+            setFile(null);
+            setPreview(null);
+            setProductInfo({});
+            setIsLoading(false);
+            setIsSuccess(true);
+          },
+        }
+      );
     });
   };
 
