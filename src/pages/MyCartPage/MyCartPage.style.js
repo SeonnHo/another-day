@@ -206,6 +206,7 @@ export const MyCartPageOrderButton = styled.button`
   color: white;
   padding: 1rem 0;
   cursor: pointer;
+  margin-bottom: 2rem;
 
   &:hover {
     background-color: #fa9a85;
@@ -215,8 +216,9 @@ export const MyCartPageOrderButton = styled.button`
     width: calc(100% - 2rem);
     font-size: 0.8rem;
     position: fixed;
-    bottom: 2rem;
+    bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
+    margin-bottom: 0;
   }
 `;
