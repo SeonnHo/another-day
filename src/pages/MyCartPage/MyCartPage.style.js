@@ -46,6 +46,7 @@ export const MyCartPageItemBox = styled.div`
   }
 
   @media screen and (max-width: 768px) {
+    margin: 0;
     width: 100%;
     padding: 1rem;
     box-sizing: border-box;
@@ -54,11 +55,14 @@ export const MyCartPageItemBox = styled.div`
 
 export const MyCartPageItemImg = styled.img`
   width: 180px;
+  height: 180px;
   background-color: #f2e8da;
   border-radius: 0.5rem;
+  object-fit: contain;
 
   @media screen and (max-width: 768px) {
     width: 100px;
+    height: 100px;
   }
 `;
 

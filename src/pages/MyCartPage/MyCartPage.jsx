@@ -53,7 +53,6 @@ export default function MyCartPage() {
           <S.MyCartPageItemListSection>
             {itemList.map((itemBySize) => {
               return Object.values(itemBySize).map((item) => {
-                console.log(item.size);
                 return (
                   <S.MyCartPageItemBox key={item.id + item.size}>
                     <S.MyCartPageItemImg
