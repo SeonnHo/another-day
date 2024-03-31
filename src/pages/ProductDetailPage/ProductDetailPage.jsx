@@ -3,14 +3,21 @@ import * as S from './ProductDetailPage.style';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import Modal from '../../components/Modal/Modal';
+import useCart from '../../hooks/useCart';
+import { useAuthContext } from '../../context/AuthContext';
 
 export default function ProductDetailPage() {
   const { state: product } = useLocation();
+  const { user } = useAuthContext();
   const navigate = useNavigate();
 
-  const [selected, setSelected] = useState('S');
+  const [selected, setSelected] = useState('사이즈를 선택해주세요.');
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isGuest, setIsGuest] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
+
+  const { addOrUpdateItem } = useCart();
 
   const handleChange = (e) => {
     setSelected(e.target.value);
@@ -33,43 +40,32 @@ export default function ProductDetailPage() {
   };
 
   const handleAddToMyCart = () => {
+    if (!user) {
+      setIsGuest(true);
+      return;
+    }
+    if (selected === '사이즈를 선택해주세요.') {
+      setIsSelected(true);
+      return;
+    }
     setIsLoading(true);
-
-    const storageItem = localStorage.getItem('cartItem');
     const { id, image, title, price } = product;
-    if (!storageItem) {
-      localStorage.setItem(
-        'cartItem',
-        JSON.stringify([
-          {
-            id,
-            image,
-            title,
-            price: addExtraPriceBySize(price, selected),
-            totalPrice: addExtraPriceBySize(price, selected),
-            size: selected,
-            count: 1,
-          },
-        ])
-      );
-    } else {
-      const item = JSON.parse(storageItem);
-      item.push({
+    addOrUpdateItem.mutate(
+      {
         id,
         image,
         title,
         price: addExtraPriceBySize(price, selected),
-        totalPrice: addExtraPriceBySize(price, selected),
         size: selected,
-        count: 1,
-      });
-      const data = JSON.stringify(item);
-      localStorage.setItem('cartItem', data);
-    }
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsSuccess(true);
-    }, 1000);
+        quantity: 1,
+      },
+      {
+        onSuccess: () => {
+          setIsLoading(false);
+          setIsSuccess(true);
+        },
+      }
+    );
   };
 
   const handleMoveToMyCartPage = () => {
@@ -99,6 +95,9 @@ export default function ProductDetailPage() {
                 value={selected}
                 onChange={handleChange}
               >
+                <option value="사이즈를 선택해주세요." disabled>
+                  사이즈를 선택해주세요.
+                </option>
                 <optgroup label="사이즈">
                   {product.size.map((size) => {
                     return (
@@ -132,6 +131,23 @@ export default function ProductDetailPage() {
           장바구니에 잘 담았어요!
           <br />
           장바구니 페이지로 이동할까요?
+        </Modal>
+      )}
+      {isGuest && (
+        <Modal
+          onConfirm={() => {
+            setIsGuest(false);
+            navigate('/', { replace: true });
+          }}
+        >
+          로그인이 필요한 서비스입니다.
+          <br />
+          로그인 후 이용해주세요.
+        </Modal>
+      )}
+      {isSelected && (
+        <Modal onConfirm={() => setIsSelected(false)}>
+          사이즈를 선택 후 장바구니에 담아주세요.
         </Modal>
       )}
     </>
