@@ -18,22 +18,22 @@ export const ProductListPageLayout = styled.main`
 export const ProductListPageProductListSection = styled.section`
   width: 80%;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: max-content;
-  column-gap: 4rem;
-  row-gap: 4rem;
+  column-gap: 2rem;
+  row-gap: 3rem;
   margin-top: 3rem;
   margin-bottom: 3rem;
 
   @media screen and (max-width: 1280px) {
     width: 80%;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 3rem;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
     row-gap: 3rem;
   }
 
   @media screen and (max-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
     row-gap: 2rem;
   }
@@ -48,6 +48,7 @@ export const ProductListPageProductListSection = styled.section`
 export const ProductListPageProductCard = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   border-radius: 1rem;
   box-shadow: 0 0 1rem 0 gray;
   padding: 1rem;
@@ -61,6 +62,8 @@ export const ProductListPageProductCard = styled.div`
 
   @media screen and (max-width: 768px) {
     flex-direction: row;
+    align-items: center;
+    height: 200px;
   }
 `;
 
@@ -68,8 +71,8 @@ export const ProductListPageProductImg = styled.img`
   width: 100%;
 
   @media screen and (max-width: 768px) {
-    width: auto;
-    height: 200px;
+    width: 100px;
+    height: fit-content;
   }
 `;
 
@@ -94,4 +97,11 @@ export const ProductListPageProductInfoText = styled.p`
   color: gray;
   margin: 0;
   text-align: center;
+
+  @media screen and (max-width: 768px) {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
 `;
