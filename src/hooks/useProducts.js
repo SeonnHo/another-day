@@ -12,7 +12,8 @@ export default function useProducts(userId) {
 
   const addProduct = useMutation({
     mutationFn: ({ productInfo, url }) => addNewProduct(productInfo, url),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['products'] }),
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: ['product list'] }),
   });
 
   return { productsQuery, addProduct };
