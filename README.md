@@ -1,6 +1,6 @@
 # 쇼핑몰 웹사이트 React Project
 
-<center>
+<div align="center">
 
 **배포 주소** : https://anotherday-sh.netlify.app/
 
@@ -21,4 +21,4 @@
 |                                                      비회원                                                       |                                                       회원                                                       |                                                      관리자                                                       |
 | ![guest-mobile-gif](https://github.com/SeonnHo/another-day/assets/158575137/6d86e6f8-0357-4779-91bc-e8e5c420d82b) | ![user-mobile-gif](https://github.com/SeonnHo/another-day/assets/158575137/49b5bef9-bf93-4721-ad5b-2292d3059756) | ![admin-mobile-gif](https://github.com/SeonnHo/another-day/assets/158575137/1bbacae1-a7bf-4d55-a721-8777360ea2fb) |
 
-</center>
+</div>
