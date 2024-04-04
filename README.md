@@ -29,3 +29,53 @@
 | ![guest-mobile-gif](https://github.com/SeonnHo/another-day/assets/158575137/6d86e6f8-0357-4779-91bc-e8e5c420d82b) | ![user-mobile-gif](https://github.com/SeonnHo/another-day/assets/158575137/49b5bef9-bf93-4721-ad5b-2292d3059756) | ![admin-mobile-gif](https://github.com/SeonnHo/another-day/assets/158575137/1bbacae1-a7bf-4d55-a721-8777360ea2fb) |
 
 </div>
+
+---
+
+## 🖥️ 프로젝트 소개
+
+사용자가 카페의 디저트 종류를 선택하고 장바구니에 담아 주문을 하여 배달 받는 것을 가정하고 만든 웹 프로젝트 입니다.
+
+Cloudinary로 이미지를 관리하고 Firebase의 Authentication과 Realtime Database를 활용하여 비회원, 회원, 관리자를 구분하여 각 권한에 맞는 기능들을 이용할 수 있도록 하고 상품과 장바구니 리스트 요청, 등록, 수정, 삭제를 구현했습니다.
+
+## ⏱️ 개발 기간
+
+> **2024.03.07 ~ 2024. 04.01**
+
+## 🛠️ 개발 환경
+
+> `React`<br/>`Styled Component`<br/>`React-Router-DOM`<br/>`React Tanstack Query`<br/>`Axios`<br/>`Cloudinary`<br/>`Firebase`
+
+## 📌 주요 기능
+
+### Protected Route Page
+
+- 장바구니 페이지와 상품 등록 페이지는 로그인한 사용자 또는 관리자에 한하여 아이콘이 보여지게 되며, 로그인하지 않은 사용자 또는 관리자가 아닌 사용자가 각 권한에 맞지 않는 페이지에 URL을 통하여 이동하려고 할 때 Protected Route Page의 로그인 검증을 통해 다시 메인페이지로 이동하도록 했습니다.
+
+### 장바구니
+
+- 장바구니는 로그인한 사용자만 이용할 수 있으며 장바구니 페이지로 이동하는 것이 불가능합니다. 또한 상품을 장바구니에 담으려고 할 때 로그인한 사용자만 가능하다는 모달을 띄워 사용자에게 알립니다.
+
+- 사용자가 상품 상세 페이지에서 사이즈를 선택하여 장바구니에 담게 되고 같은 상품이라도 사이즈가 다르다면 장바구니에 포함됩니다.
+
+- 장바구니에서는 수량을 내리거나 올릴 수 있으며 삭제가 가능합니다. 1개 미만으로는 내릴 수 없습니다.
+
+### 상품 등록
+
+- 상품 등록은 관리자만 이용할 수 있습니다. Protected Route Page를 통해 URL로 이동하는 것을 제한합니다.
+
+- 이미지와 함께 상품 정보를 작성하여 등록하게 됩니다. 이미지를 잘못 첨부했다면 작성하는 동안에는 재첨부가 가능합니다. 작성을 마치고 등록버튼을 누르면 등록될 동안 사용자에게 로딩창을 띄워 알리고 메인페이지로 이동하는 모달을 띄워 등록이 완료됐음을 알립니다.
+
+### Cloudinary
+
+- Cloudinary를 통해 이미지를 관리하고 이미지 저장 API 사용 시 반환되는 URL을 이용해 화면에 이미지를 나타냈습니다.
+
+### Firebase
+
+- Firebase의 Authentication의 구글로그인을 통해 로그인과 로그아웃을 구현하고 등록된 유저정보를 통해 일반회원과 관리자를 구분했습니다. OnAuthStateChanged 메서드를 통해 로그인 상태를 관찰해 로그인 유지를 할 수 있도록 했습니다.
+
+- Realtime Database를 활용하여 상품 정보와 유저별 장바구니 정보를 저장하고 Firebase SDK의 set, get 등을 통해 읽기, 등록, 수정, 삭제 기능을 구현했습니다.
+
+### React Tanstack Query
+
+- 리액트 쿼리의 데이터 캐싱을 통해 무분별한 데이터 요청을 방지하고, 쿼리 클라이언트의 invalidateQueries 메서드를 활용하여 상품 등록이나 장바구니 추가, 수정, 삭제 등이 이루어져 해당 데이터들과 맵핑된 쿼리키가 업데이트된 데이터를 다시 가져올 수 있도록 구현했습니다.
